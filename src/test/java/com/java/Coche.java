@@ -6,11 +6,11 @@ public class Coche {
     // 2- Comportamiento: se representa con metodos
     // 3- Identidad: permite que los objetos interactuen entre si
 
-    public String color;
-    public String marca;
-    public String motor;
-    public int llantas;
-    public int asientos;
+    private String color;
+    private String marca;
+    private String motor;
+    private int llantas;
+    private int asientos;
 
     // Constructores
     // 1- Tiene el mismo nombre que la clase
@@ -51,4 +51,48 @@ public class Coche {
         System.out.println("El coche esta frenando");
     }
 
+    /*
+     * Encapsulacion - mecanismo para ocultar las instancias de las variables
+     * 1- Las variables tienen que ser privadas en los metodos publicos
+     */
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+
+    public int getLlantas() {
+        return llantas;
+    }
+
+    public void setLlantas(int llantas) {
+        this.llantas = llantas;
+    }
+
+    public int getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(int asientos) {
+        this.asientos = asientos;
+    }
 }
