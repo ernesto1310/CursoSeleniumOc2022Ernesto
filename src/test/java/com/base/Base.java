@@ -71,6 +71,7 @@ public class Base {
      * Type
      */
     public void type(String text, By element) {
+
         driver.findElement(element).sendKeys(text);
     }
 
@@ -91,5 +92,12 @@ public class Base {
      */
     public String getText(By element) {
         return driver.findElement(element).getText();
+    }
+
+    /**
+     * Close browser
+     */
+    public void closeBrowser() {
+        driver.close();
     }
 }
