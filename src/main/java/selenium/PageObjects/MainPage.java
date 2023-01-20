@@ -1,9 +1,8 @@
-package com.PageObjects;
+package selenium.PageObjects;
 
-import com.base.Base;
+import selenium.base.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class MainPage extends Base {
 
@@ -24,7 +23,9 @@ public class MainPage extends Base {
         verifyTitleContains("Computers");
         verifyVisibilityOfElement(txtSearchBox);
         type(computer, txtSearchBox);
+        takeScreenshot("typeInSearchBox");
         click(btnFilterByName);
+        takeScreenshot("resultsAfterClick");
     }
 
     /**
@@ -32,6 +33,7 @@ public class MainPage extends Base {
      */
     public boolean verifyComputerTable(String expectedComputer) {
         String actualComputer = getText(tblActualFirstRow);
+        takeScreenshot("verifyComputer");
         if (expectedComputer.equals(actualComputer)) {
             return true;
         } else {

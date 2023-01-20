@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QA_regression" parallel="tests" thread-count="2">
+    <test name="MainTests">
+        <classes>
+            <class name="com.computers.selenium.MainPOMTests"/>
+        </classes>
+    </test>
+    <test name="LoginTests">
+        <classes>
+            <class name="com.computers.selenium.MainPOMTests"/>
+        </classes>
+    </test>
+    <test name="UserTests">
+        <classes>
+            <class name="com.computers.selenium.MainPOMTests"/>
+        </classes>
+    </test>
+    <test name="DashboardTests">
+        <classes>
+            <class name="com.computers.selenium.MainPOMTests"/>
+        </classes>
+    </test>
+</suite>

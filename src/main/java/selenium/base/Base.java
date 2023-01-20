@@ -1,13 +1,23 @@
-package com.base;
+package selenium.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -99,5 +109,44 @@ public class Base {
      */
     public void closeBrowser() {
         driver.close();
+    }
+
+    /**
+     *
+     * @param jsonFileObj
+     * @param jsonKey
+     * @return
+     */
+    public String getJSONValue(String jsonFileObj, String jsonKey){
+        try {
+
+            // JSON Data
+            InputStream inputStream = new FileInputStream(GlobalVariables.PATH_JSON_DATA + jsonFileObj + ".json");
+            JSONObject jsonObject = new JSONObject(new JSONTokener(inputStream));
+
+            // Get Data
+            String jsonValue = (String) jsonObject.getJSONObject(jsonFileObj).get(jsonKey);
+            return jsonValue;
+
+        } catch (FileNotFoundException e) {
+            Assert.fail("JSON file is not found");
+            return null;
+        }
+    }
+
+
+    /**
+     * Take Screenshot
+     */
+    public String takeScreenshot(String fileName){
+        try {
+            String pathFileName= GlobalVariables.PATH_SCREENSHOTS + fileName + ".png";
+            Screenshot screenshot = new AShot().takeScreenshot(driver);
+            ImageIO.write(screenshot.getImage(), "PNG", new File(pathFileName));
+            return pathFileName;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
