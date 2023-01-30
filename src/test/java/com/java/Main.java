@@ -23,5 +23,6 @@ public class Main {
         Motocicleta moto1 = new Motocicleta();
         moto1.encender();
         moto1.acelerar();
+
     }
 }
